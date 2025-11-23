@@ -1,0 +1,30 @@
+{
+  "spaces": {
+    "2cf24dba5fb0a30e": {
+      "items": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "lastPicked": {
+        "item": "C",
+        "index": 2,
+        "timestamp": "2025-11-23T01:15:30.130Z",
+        "namespace": "2cf24dba..."
+      },
+      "created": "2025-11-23T00:45:23.546Z",
+      "lastModified": "2025-11-23T01:15:30.130Z"
+    },
+    "2cb4b1431b84ec15": {
+      "items": [
+        "D",
+        "E",
+        "F"
+      ],
+      "lastPicked": null,
+      "created": "2025-11-23T00:46:05.655Z",
+      "lastModified": "2025-11-23T00:46:07.332Z"
+    }
+  }
+}
