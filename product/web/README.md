@@ -33,7 +33,7 @@ The application will run on http://localhost:5173
 ## Configuration
 
 The API endpoint can be configured via environment variable:
-- `API_SERVER_URL` - Backend API URL (default: http://localhost:3001/api)
+- `VITE_API_SERVER_URL` - Backend API URL (default: http://localhost:3001/api)
 
 ## Tech Stack
 

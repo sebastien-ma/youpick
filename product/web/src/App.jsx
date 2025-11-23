@@ -30,7 +30,7 @@ function App() {
     try {
       setIsLoading(true)
       setError(null)
-      const response = await fetch(`${config.API_URL}/items`, {
+      const response = await fetch(`${config.API_SERVER_URL}/items`, {
         headers: {
           'X-Password': userPassword
         }
@@ -54,7 +54,7 @@ function App() {
     if (inputValue.trim()) {
       try {
         setError(null)
-        const response = await fetch(`${config.API_URL}/items`, {
+        const response = await fetch(`${config.API_SERVER_URL}/items`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function App() {
   const handleRemoveItem = async (indexToRemove) => {
     try {
       setError(null)
-      const response = await fetch(`${config.API_URL}/items/${indexToRemove}`, {
+      const response = await fetch(`${config.API_SERVER_URL}/items/${indexToRemove}`, {
         method: 'DELETE',
         headers: {
           'X-Password': password
@@ -118,7 +118,7 @@ function App() {
 
       // Optionally save the picked item to server
       try {
-        await fetch(`${config.API_URL}/picked`, {
+        await fetch(`${config.API_SERVER_URL}/picked`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

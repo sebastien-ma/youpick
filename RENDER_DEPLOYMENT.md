@@ -75,7 +75,7 @@ Add in Render dashboard during creation or in Environment tab:
 
 ```bash
 # Point to your deployed API (update after API is deployed)
-API_SERVER_URL=https://youpick-api.onrender.com/api
+VITE_API_SERVER_URL=https://youpick-api.onrender.com/api
 ```
 
 ### Redirect/Rewrite Rules
@@ -131,7 +131,7 @@ render create web youpick-api \
 # Deploy Web
 cd ../web
 render create static youpick-web \
-  --env API_SERVER_URL=https://youpick-api.onrender.com/api \
+  --env VITE_API_SERVER_URL=https://youpick-api.onrender.com/api \
   --build-command "npm install && npm run build" \
   --publish-path dist
 ```
