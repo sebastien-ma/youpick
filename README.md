@@ -131,7 +131,7 @@ RATE_LIMIT_MAX_REQUESTS=100
 
 ### Web (.env)
 ```bash
-VITE_API_URL=http://localhost:3001/api
+API_SERVER_URL=http://localhost:3001/api
 ```
 
 ## Security
