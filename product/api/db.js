@@ -16,10 +16,20 @@ if (!DATABASE_URL) {
 
 // Configure SSL based on environment
 // In production (Render, Heroku, etc.), we need to handle self-signed certificates
-const sslConfig = process.env.NODE_ENV === 'production'
+// Check if we're in production or if DATABASE_URL contains SSL indicators
+const isProduction = process.env.NODE_ENV === 'production';
+const requiresSSL = DATABASE_URL.includes('sslmode=require') || DATABASE_URL.includes('ssl=true') || isProduction;
+
+console.log('Database configuration:', {
+  NODE_ENV: process.env.NODE_ENV,
+  isProduction,
+  requiresSSL,
+  DATABASE_URL_preview: DATABASE_URL.substring(0, 30) + '...'
+});
+
+const sslConfig = requiresSSL
   ? {
       rejectUnauthorized: false, // Allow self-signed certificates
-      // Alternatively, you can use: ssl: { rejectUnauthorized: false }
     }
   : false; // No SSL in development
 
