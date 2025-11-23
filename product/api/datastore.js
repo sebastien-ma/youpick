@@ -1,8 +1,10 @@
-import { query, getClient, SCHEMA_NAME } from './db.js';
+import { query, getClient } from './db.js';
 
 /**
  * PostgreSQL-based data storage for spaces
  */
+
+const SCHEMA_NAME = 'youpick';
 
 // Get or create a space
 async function getSpace(spaceId) {

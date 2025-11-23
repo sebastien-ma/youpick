@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
-import { initializeDatabase, closeDatabase } from './db.js';
+import { closeDatabase, testConnection } from './db.js';
 import {
   getSpace,
   updateSpace,
@@ -307,8 +307,14 @@ process.on('SIGTERM', async () => {
 // Start server
 async function startServer() {
   try {
-    // Initialize database connection and schema
-    await initializeDatabase();
+    // Test database connection (but don't initialize schema)
+    console.log('Testing database connection...');
+    const isConnected = await testConnection();
+
+    if (!isConnected) {
+      console.error('Failed to connect to database. Please check your DATABASE_URL and ca.pem certificate.');
+      process.exit(1);
+    }
 
     app.listen(PORT, () => {
       console.log('\n========================================');
