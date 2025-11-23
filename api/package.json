@@ -1,0 +1,23 @@
+{
+  "name": "youpick-api",
+  "version": "1.0.0",
+  "description": "API server for YouPick random picker application",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0"
+  },
+  "keywords": ["api", "backend", "express", "nodejs"],
+  "author": "",
+  "license": "ISC"
+}
