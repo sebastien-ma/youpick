@@ -39,6 +39,7 @@ All endpoints require `X-Password` header for authentication:
 - `GET /api/picked` - Get the last picked item
 - `POST /api/picked` - Save a picked item
 - `GET /health` - Health check (no auth required)
+- `GET /healthz` - Health check for cloud platforms like Render, Kubernetes (no auth required)
 
 ## Environment Variables
 

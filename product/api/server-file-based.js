@@ -68,8 +68,18 @@ const logRequest = (req, res, next) => {
 
 app.use(logRequest);
 
-// Health Check Endpoint (No auth required)
+// Health Check Endpoints (No auth required)
+// Standard /health endpoint
 app.get('/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Kubernetes/Cloud-native standard /healthz endpoint (used by Render, K8s, etc.)
+app.get('/healthz', (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
