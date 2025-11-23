@@ -4,12 +4,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// IMPORTANT: This disables SSL certificate validation in development
-// TODO: Use proper CA certificate in production
-if (process.env.NODE_ENV !== 'production') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-}
-
 // Database connection configuration
 const DATABASE_URL = process.env.DATABASE_URL;
 const SCHEMA_NAME = 'youpick';
@@ -20,9 +14,19 @@ if (!DATABASE_URL) {
   process.exit(1);
 }
 
+// Configure SSL based on environment
+// In production (Render, Heroku, etc.), we need to handle self-signed certificates
+const sslConfig = process.env.NODE_ENV === 'production'
+  ? {
+      rejectUnauthorized: false, // Allow self-signed certificates
+      // Alternatively, you can use: ssl: { rejectUnauthorized: false }
+    }
+  : false; // No SSL in development
+
 // Create a connection pool
 const pool = new Pool({
   connectionString: DATABASE_URL,
+  ssl: sslConfig,
   max: 20, // maximum number of clients in the pool
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   connectionTimeoutMillis: 2000, // how long to wait for a connection

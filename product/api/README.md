@@ -46,9 +46,24 @@ All endpoints require `X-Password` header for authentication:
 See `.env.example` for available configuration options:
 - `PORT` - Server port (default: 3001)
 - `NODE_ENV` - Environment (development/production)
+- `DATABASE_URL` - PostgreSQL connection string (required)
 - `ALLOWED_ORIGINS` - CORS allowed origins
 - `RATE_LIMIT_WINDOW_MS` - Rate limit window in ms
 - `RATE_LIMIT_MAX_REQUESTS` - Max requests per window
+
+## Deployment
+
+### Deploying to Render
+
+1. Create a PostgreSQL database on Render
+2. Set the following environment variables in your Render service:
+   - `NODE_ENV=production`
+   - `DATABASE_URL` - Will be automatically set by Render when you connect the PostgreSQL database
+   - `ALLOWED_ORIGINS` - Your frontend URL(s), comma-separated if multiple
+
+3. The application will automatically handle SSL certificates for the database connection
+
+**Note:** The application is configured to handle self-signed certificates commonly used by managed PostgreSQL instances on cloud platforms.
 
 ## Security
 
